@@ -7,6 +7,7 @@
 /.idea/
 /.vs/
 /.vscode/
+/.config/
 gclient_config.py_entries
 /gh-pages/
 /target/
