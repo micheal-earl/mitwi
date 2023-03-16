@@ -1,7 +1,7 @@
 import { FunctionalComponent } from "preact";
 import {
-  BsHouseFill,
   BsBellFill,
+  BsHouseFill,
 } from "https://esm.sh/react-icons@4.8.0/bs?alias=react:preact/compat";
 import { BiLogOut } from "https://esm.sh/react-icons@4.8.0/bi?alias=react:preact/compat";
 import { FaUser } from "https://esm.sh/react-icons@4.8.0/fa?alias=react:preact/compat";
@@ -32,14 +32,14 @@ const Sidebar: FunctionalComponent = () => {
       <div class="flex flex-col items-end">
         <div class="space-y-2 lg:w-[230px]">
           <SidebarLogo />
-          {items.map((item) => 
-              <SidebarItem
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                icon={item.icon}
-              />
-          )}
+          {items.map((item) => (
+            <SidebarItem
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              icon={item.icon}
+            />
+          ))}
           <SidebarItem onClick={() => {}} icon={BiLogOut} label="Logout" />
           <SidebarTweetButton />
         </div>

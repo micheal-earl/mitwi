@@ -1,9 +1,9 @@
 import { FunctionalComponent } from "preact";
-import { BsTwitter } from "https://esm.sh/react-icons@4.8.0/bs?alias=react:preact/compat"
+import { BsTwitter } from "https://esm.sh/react-icons@4.8.0/bs?alias=react:preact/compat";
 
 const SidebarLogo: FunctionalComponent = () => {
   return (
-    <a 
+    <a
       href="/"
       class="
         rounded-full 
@@ -20,7 +20,7 @@ const SidebarLogo: FunctionalComponent = () => {
     >
       <BsTwitter size={28} color="white" />
     </a>
-  )
-}
+  );
+};
 
 export default SidebarLogo;

@@ -8,11 +8,11 @@ const FollowBar: FunctionalComponent = () => {
           Who to follow
         </h2>
         <div class="flex flex-col gap-6 mt-4">
-            {/* TODO USER LIST */}
-          </div>
+          {/* TODO USER LIST */}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FollowBar
+export default FollowBar;

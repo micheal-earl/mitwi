@@ -1,5 +1,7 @@
 import { useCallback } from "preact/hooks/";
 import { FunctionalComponent } from "preact";
+import { AiOutlineClose } from "https://esm.sh/react-icons@4.8.0/ai?alias=react:preact/compat";
+import Button from "./Button.tsx";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -74,6 +76,47 @@ const Modal: FunctionalComponent<ModalProps> = ({
             outline-none 
             focus:outline-none
             ">
+            {/*header*/}
+            <div className="
+              flex 
+              items-center 
+              justify-between 
+              p-10 
+              rounded-t
+              ">
+              <h3 className="text-3xl font-semibold text-white">
+                {title}
+              </h3>
+              <button
+                className="
+                  p-1 
+                  ml-auto
+                  border-0 
+                  text-white 
+                  hover:opacity-70
+                  transition
+                "
+                onClick={handleClose}
+              >
+                <AiOutlineClose size={20} />
+              </button>
+            </div>
+            {/*body*/}
+            <div className="relative p-10 flex-auto">
+              {body}
+            </div>
+            {/*footer*/}
+            <div className="flex flex-col gap-2 p-10">
+              <Button
+                disabled={disabled}
+                label={actionLabel}
+                secondary
+                fullWidth
+                large
+                onClick={handleSubmit}
+              />
+              {footer}
+            </div>
           </div>
         </div>
       </div>

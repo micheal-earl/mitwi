@@ -4,8 +4,7 @@ import { FaFeather } from "https://esm.sh/react-icons@4.8.0/fa?alias=react:preac
 const SidebarTweetButton: FunctionalComponent = () => {
   return (
     <a href="/">
-      <div
-        class="
+      <div class="
           mt-6
           lg:hidden
           rounded-full
@@ -19,12 +18,10 @@ const SidebarTweetButton: FunctionalComponent = () => {
           hover:bg-opacity-80
           transition
           cursor-pointer
-        "
-      >
+        ">
         <FaFeather size={24} color="white" />
       </div>
-      <div
-        class="
+      <div class="
           mt-5
           hidden
           lg:block
@@ -35,18 +32,15 @@ const SidebarTweetButton: FunctionalComponent = () => {
           hover:bg-opacity-90
           cursor-pointer
           transition
-        "
-      >
-        <p
-          class="
+        ">
+        <p class="
             hidden 
             lg:block 
             text-center 
             font-semibold 
             text-white 
             text-[20px]
-          "
-        >
+          ">
           Tweet
         </p>
       </div>

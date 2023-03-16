@@ -11,13 +11,13 @@ interface ButtonProps {
 }
 
 const Button: FunctionalComponent<ButtonProps> = ({
-  label, 
-  secondary, 
-  fullWidth, 
-  large, 
-  disabled, 
-  outline, 
-  onClick 
+  label,
+  secondary,
+  fullWidth,
+  large,
+  disabled,
+  outline,
+  onClick,
 }) => {
   return (
     <button
@@ -42,11 +42,10 @@ const Button: FunctionalComponent<ButtonProps> = ({
         ${outline ? "border-white" : ""}
         ${outline ? "text-white" : ""}
       `}
-
     >
       {label}
     </button>
   );
-}
+};
 
-export default Button
+export default Button;
