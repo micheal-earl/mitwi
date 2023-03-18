@@ -7,7 +7,7 @@ import { BiLogOut } from "https://esm.sh/react-icons@4.8.0/bi?alias=react:preact
 import { FaUser } from "https://esm.sh/react-icons@4.8.0/fa?alias=react:preact/compat";
 import SidebarLogo from "./SidebarLogo.tsx";
 import SidebarItem from "./SidebarItem.tsx";
-import SidebarTweetButton from "./SidebarTweetButton.tsx";
+import SidebarTweetButton from "../../islands/SidebarTweetButton.tsx";
 
 const Sidebar: FunctionalComponent = () => {
   const items = [

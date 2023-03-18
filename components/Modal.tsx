@@ -41,7 +41,7 @@ const Modal: FunctionalComponent<ModalProps> = ({
   }, [onSubmit, disabled]);
 
   if (!isOpen) {
-    return null;
+    return <div class="hidden"></div>;
   }
 
   return (
