@@ -1,5 +1,5 @@
 import { useCallback } from "preact/hooks/";
-import { FunctionalComponent } from "preact";
+import { FunctionalComponent, VNode } from "preact";
 import { AiOutlineClose } from "https://esm.sh/react-icons@4.8.0/ai?alias=react:preact/compat";
 import Button from "./Button.tsx";
 
@@ -8,8 +8,8 @@ interface ModalProps {
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
-  body?: Element;
-  footer?: Element;
+  body?: VNode;
+  footer?: VNode;
   actionLabel: string;
   disabled?: boolean;
 }
@@ -46,7 +46,7 @@ const Modal: FunctionalComponent<ModalProps> = ({
 
   return (
     <>
-      <div className="
+      <div class="
           justify-center 
           items-center 
           flex 
@@ -60,9 +60,9 @@ const Modal: FunctionalComponent<ModalProps> = ({
           bg-gray-900
           bg-opacity-60
         ">
-        <div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
+        <div class="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
           {/* Content */}
-          <div className="
+          <div class="
             h-full
             lg:h-auto
             border-0 
@@ -77,18 +77,18 @@ const Modal: FunctionalComponent<ModalProps> = ({
             focus:outline-none
             ">
             {/*header*/}
-            <div className="
+            <div class="
               flex 
               items-center 
               justify-between 
               p-10 
               rounded-t
               ">
-              <h3 className="text-3xl font-semibold text-white">
+              <h3 class="text-3xl font-semibold text-white">
                 {title}
               </h3>
               <button
-                className="
+                class="
                   p-1 
                   ml-auto
                   border-0 
@@ -102,11 +102,11 @@ const Modal: FunctionalComponent<ModalProps> = ({
               </button>
             </div>
             {/*body*/}
-            <div className="relative p-10 flex-auto">
+            <div class="relative p-10 flex-auto">
               {body}
             </div>
             {/*footer*/}
-            <div className="flex flex-col gap-2 p-10">
+            <div class="flex flex-col gap-2 p-10">
               <Button
                 disabled={disabled}
                 label={actionLabel}
