@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts"
+    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "prisma": "deno run -A --unstable npm:prisma"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
