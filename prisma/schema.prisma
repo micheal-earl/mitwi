@@ -2,10 +2,64 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["deno"]
+  output          = "../generated/client"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String         @id @default(uuid())
+  name            String?
+  username        String         @unique
+  email           String         @unique
+  bio             String?
+  emailVerified   DateTime?
+  coverImage      String?
+  profileImage    String?
+  hashedPassword  String
+  followingIds    String[]
+  hasNotification Boolean?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  posts           Post[]         @relation("Posts")
+  likes           Post[]         @relation("Likes")
+  comments        Comment[]      @relation("Comments")
+  notifications   Notification[] @relation("Notifications")
+}
+
+model Post {
+  id        String    @id @default(uuid())
+  body      String
+  image     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      User      @relation("Posts", fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  likedIds  User[]    @relation("Likes")
+  comments  Comment[] @relation("PostComments")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation("Comments", fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  post      Post     @relation("PostComments", fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation("Notifications", fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
 }
