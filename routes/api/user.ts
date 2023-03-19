@@ -1,26 +1,26 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 //import { PrismaClient, User } from "../../generated/client/deno/edge.ts";
-import { PrismaClient } from "../../generated/client/deno/edge.ts";
-import type { User } from "../../generated/client/deno/edge.ts";
+// import { PrismaClient } from "../../generated/client/deno/edge.ts";
+// import type { User } from "../../generated/client/deno/edge.ts";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
-interface State {
-  data: User[];
-}
+// interface State {
+//   data: User[];
+// }
 
-async function handler(req: Request, ctx: HandlerContext<State>) {
-  if (req.method != "GET") return;
-  const newUser = await prisma.user.create({
-    data: {
-      username: "Alice",
-      email: "alice@prisma.io",
-      hashedPassword: "asdf",
-    },
-  });
-  ctx.state.data = await prisma.user.findMany();
-  return new Response(`Data is ${ctx.state.data}`);
-}
+// async function handler(req: Request, ctx: HandlerContext<State>) {
+//   if (req.method != "GET") return;
+//   const newUser = await prisma.user.create({
+//     data: {
+//       username: "Alice",
+//       email: "alice@prisma.io",
+//       hashedPassword: "asdf",
+//     },
+//   });
+//   ctx.state.data = await prisma.user.findMany();
+//   return new Response(`Data is ${ctx.state.data}`);
+// }
 
 // const handler: Handlers = {
 //   async GET(_, ctx) {
@@ -56,4 +56,4 @@ async function handler(req: Request, ctx: HandlerContext<State>) {
 //   return users;
 // };
 
-export default handler;
+// export default handler;
