@@ -1,26 +1,18 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
-//import { PrismaClient, User } from "../../generated/client/deno/edge.ts";
-// import { PrismaClient } from "../../generated/client/deno/edge.ts";
-// import type { User } from "../../generated/client/deno/edge.ts";
+import mongoose from "../../models/db.ts";
+import UserModel from "../../models/User.ts";
 
-// const prisma = new PrismaClient();
+export async function handler(_req: Request, _ctx: HandlerContext) {
+  try {
+    // get all todo list
+    const user = await UserModel.find();
 
-// interface State {
-//   data: User[];
-// }
-
-// async function handler(req: Request, ctx: HandlerContext<State>) {
-//   if (req.method != "GET") return;
-//   const newUser = await prisma.user.create({
-//     data: {
-//       username: "Alice",
-//       email: "alice@prisma.io",
-//       hashedPassword: "asdf",
-//     },
-//   });
-//   ctx.state.data = await prisma.user.findMany();
-//   return new Response(`Data is ${ctx.state.data}`);
-// }
+    // return todo
+    return Response.json(JSON.stringify(user));
+  } catch (error) {
+    return new Response(error);
+  }
+}
 
 // const handler: Handlers = {
 //   async GET(_, ctx) {
@@ -55,5 +47,3 @@ import { HandlerContext, Handlers } from "$fresh/server.ts";
 //   const users = await prisma.user.findMany();
 //   return users;
 // };
-
-// export default handler;

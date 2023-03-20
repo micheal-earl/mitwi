@@ -4,6 +4,9 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
+import connectToDatabase from "./models/db.ts";
+connectToDatabase();
+
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 
