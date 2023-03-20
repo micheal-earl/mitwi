@@ -13,4 +13,8 @@ import manifest from "./fresh.gen.ts";
 import twindPlugin from "$fresh/plugins/twind.ts";
 import twindConfig from "./twind.config.ts";
 
-await start(manifest, { plugins: [twindPlugin(twindConfig)] });
+import "https://deno.land/std@0.180.0/dotenv/load.ts";
+
+const PORT = Number(Deno.env.get("PORT")) || 8000;
+
+await start(manifest, { plugins: [twindPlugin(twindConfig)], port: PORT });
