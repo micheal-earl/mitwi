@@ -184,6 +184,7 @@
     "https://esm.sh/v111/csstype@3.1.1/index.d.ts": "1c29793071152b207c01ea1954e343be9a44d85234447b2b236acae9e709a383",
     "https://esm.sh/v111/mongodb@5.1.0/mongodb.d.ts": "4add3a256374adae30626ecaf46c1664720cb295e1d3745b1c241fddfa5cc375",
     "https://esm.sh/v111/mongoose@7.0.2/deno/mongoose.js": "5d224be506046083549c6963c634b0e5a814d5b7f3157dd8a372f4ce9bc4462f",
+    "https://esm.sh/v111/mongoose@7.0.2/es2022/mongoose.js": "485936da2011d3d633cfa25497eec506a2e7cfb59c949d4f95734804ad0b6633",
     "https://esm.sh/v111/mongoose@7.0.2/types/aggregate.d.ts": "4e2b601dcaf35a78ee0084f347c47619119c1f19db8fb0f552003e2162f5e7e9",
     "https://esm.sh/v111/mongoose@7.0.2/types/callback.d.ts": "0339d33fe49fbc1c70842c886195e01eafd37f7431dd7f32209dd0544c289474",
     "https://esm.sh/v111/mongoose@7.0.2/types/collection.d.ts": "86251ff762126267eced20be6bc731c218467025939fe81c6e38b4929ea313fb",
