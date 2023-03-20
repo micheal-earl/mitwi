@@ -11,3 +11,5 @@ RUN deno cache main.ts --unstable --import-map=import_map.json
 EXPOSE 8000
 
 CMD ["run", "-A", "--unstable", "main.ts"]
+
+RUN docker run -t -i -p 80:8000 mitwi
