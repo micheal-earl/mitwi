@@ -20,5 +20,18 @@ export default function validateMethod(
     );
     return resp;
   }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    const resp = new Response(
+      JSON.stringify({
+        error: `Invalid email format`,
+      }),
+      {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      },
+    );
+    return resp;
+  }
   return null;
 }
