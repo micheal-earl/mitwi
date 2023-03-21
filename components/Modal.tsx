@@ -60,7 +60,7 @@ const Modal: FunctionalComponent<ModalProps> = ({
           bg-gray-900
           bg-opacity-60
         ">
-        <div class="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
+        <div class="relative w-full lg:w-2/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
           {/* Content */}
           <div class="
             h-full
@@ -102,7 +102,7 @@ const Modal: FunctionalComponent<ModalProps> = ({
               </button>
             </div>
             {/*body*/}
-            <div class="relative p-10 flex-auto">
+            <div class="relative p-5 flex-auto">
               {body}
             </div>
             {/*footer*/}

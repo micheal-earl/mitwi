@@ -1,12 +1,16 @@
 import { FunctionalComponent } from "preact";
 import { useCallback, useState } from "preact/hooks/";
 import axiod from "https://deno.land/x/axiod@0.26.2/mod.ts";
-import { toast } from "https://esm.sh/react-toastify@9.1.1?alias=react:preact/compat&deps=preact@10.11.0";
+import {
+  toast,
+  ToastOptions,
+} from "https://esm.sh/react-toastify@9.1.1?alias=react:preact/compat&deps=preact@10.11.0";
 
 import useRegisterModal from "../hooks/useRegisterModal.ts";
 import useLoginModal from "../hooks/useLoginModal.ts";
 import Input from "../components/Input.tsx";
 import Modal from "../components/Modal.tsx";
+import { resetWarningCache } from "https://esm.sh/v111/@types/prop-types@15.7.5/X-YS9yZWFjdDpwcmVhY3QvY29tcGF0CmQvcHJlYWN0QDEwLjExLjA/index";
 
 const RegisterModal: FunctionalComponent = () => {
   const loginModal = useLoginModal();
@@ -18,11 +22,27 @@ const RegisterModal: FunctionalComponent = () => {
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const toastOptions: ToastOptions = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  };
+
+  const reset = () => {
+    setEmail("");
+    setName("");
+    setPassword("");
+    setUsername("");
+  };
+
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-
-      console.log("got hit");
 
       await axiod.post("/api/auth/register", {
         email,
@@ -31,33 +51,21 @@ const RegisterModal: FunctionalComponent = () => {
         name,
       });
 
-      toast.success("New account registered!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
+      toast.success("New account registered!", toastOptions);
+
+      await axiod.post("/api/auth/login", {
+        username,
+        password,
       });
 
-      //registerModal.onClose();
+      toast.success("Logged in!", toastOptions);
     } catch (error) {
       console.error(error);
-      toast.error("Registration failed!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      toast.error("Something went wrong!", toastOptions);
     } finally {
       setIsLoading(false);
       registerModal.onClose();
+      reset();
     }
   }, [registerModal, email, password, username, name]);
 
@@ -71,26 +79,42 @@ const RegisterModal: FunctionalComponent = () => {
     <div class="flex flex-col gap-4">
       <Input
         placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setEmail(e.target.value);
+          }
+        }}
         value={email}
         disabled={isLoading}
       />
       <Input
         placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setName(e.target.value);
+          }
+        }}
         value={name}
         disabled={isLoading}
       />
       <Input
         placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setUsername(e.target.value);
+          }
+        }}
         value={username}
         disabled={isLoading}
       />
       <Input
         placeholder="Password"
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setPassword(e.target.value);
+          }
+        }}
         value={password}
         disabled={isLoading}
       />
@@ -122,7 +146,10 @@ const RegisterModal: FunctionalComponent = () => {
       isOpen={registerModal.isOpen}
       title="Create an account"
       actionLabel="Register"
-      onClose={registerModal.onClose}
+      onClose={() => {
+        reset();
+        registerModal.onClose();
+      }}
       onSubmit={onSubmit}
       body={bodyContent}
       footer={footerContent}

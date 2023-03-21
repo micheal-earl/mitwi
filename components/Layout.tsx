@@ -12,7 +12,7 @@ const Layout: FunctionalComponent<LayoutProps> = ({ children }) => {
       <div class="container h-full mx-auto xl:px-30 max-w-6xl">
         <div class="grid grid-cols-4 h-full">
           <Sidebar />
-          <div class="col-span-3 lg:col-span-2 border-x-[1px] border-gray-500">
+          <div class="col-span-3 lg:col-span-2 border-x-[1px] border-gray-400 border-opacity-30">
             {children}
           </div>
           <FollowBar />

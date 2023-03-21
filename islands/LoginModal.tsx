@@ -1,5 +1,11 @@
 import { FunctionalComponent } from "preact";
 import { useCallback, useState } from "preact/hooks/";
+import axiod from "https://deno.land/x/axiod@0.26.2/mod.ts";
+import {
+  toast,
+  ToastOptions,
+} from "https://esm.sh/react-toastify@9.1.1?alias=react:preact/compat&deps=preact@10.11.0";
+
 import Input from "../components/Input.tsx";
 import Modal from "../components/Modal.tsx";
 import useLoginModal from "../hooks/useLoginModal.ts";
@@ -9,24 +15,45 @@ const LoginModal: FunctionalComponent = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const toastOptions: ToastOptions = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  };
+
+  const reset = () => {
+    setPassword("");
+    setUsername("");
+  };
 
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      // TODO ADD LOGIN
-      await (() => 1)();
+      await axiod.post("/api/auth/login", {
+        username,
+        password,
+      });
 
-      loginModal.onClose();
+      toast.success("Logged in!", toastOptions);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Something went wrong!", toastOptions);
     } finally {
       setIsLoading(false);
+      loginModal.onClose();
+      reset();
     }
-  }, [loginModal]);
+  }, [loginModal, username, password]);
 
   const onToggle = useCallback(() => {
     if (isLoading) return;
@@ -37,15 +64,25 @@ const LoginModal: FunctionalComponent = () => {
   const bodyContent = (
     <div class="flex flex-col gap-4">
       <Input
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
+        placeholder="Username"
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setUsername(e.target.value);
+            console.log(username);
+          }
+        }}
+        value={username}
         disabled={isLoading}
       />
       <Input
         placeholder="Password"
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setPassword(e.target.value);
+            console.log("pass: ", password);
+          }
+        }}
         value={password}
         disabled={isLoading}
       />
@@ -77,7 +114,10 @@ const LoginModal: FunctionalComponent = () => {
       isOpen={loginModal.isOpen}
       title="Login"
       actionLabel="Sign in"
-      onClose={loginModal.onClose}
+      onClose={() => {
+        reset();
+        loginModal.onClose();
+      }}
       onSubmit={onSubmit}
       body={bodyContent}
       footer={footerContent}

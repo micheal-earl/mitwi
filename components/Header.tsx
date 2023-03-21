@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header: FunctionalComponent<HeaderProps> = ({ label, showBackArrow }) => {
   const handleBack = () => {};
   return (
-    <div class="border-b-[1px] border-gray-500 p-5">
+    <div class="border-b-[1px] border-gray-400 border-opacity-30 p-5">
       <div class="flex flex-row items-center gap-2">
         {showBackArrow && (
           <BiArrowBack
