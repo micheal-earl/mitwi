@@ -1,5 +1,4 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { setCookie } from "https://deno.land/std@0.178.0/http/cookie.ts";
 
 import validateMethod from "../../validators/method.ts";
 

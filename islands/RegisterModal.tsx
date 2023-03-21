@@ -1,5 +1,8 @@
 import { FunctionalComponent } from "preact";
 import { useCallback, useState } from "preact/hooks/";
+import axiod from "https://deno.land/x/axiod@0.26.2/mod.ts";
+import { toast } from "https://esm.sh/react-toastify@9.1.1?alias=react:preact/compat&deps=preact@10.11.0";
+
 import useRegisterModal from "../hooks/useRegisterModal.ts";
 import useLoginModal from "../hooks/useLoginModal.ts";
 import Input from "../components/Input.tsx";
@@ -19,16 +22,44 @@ const RegisterModal: FunctionalComponent = () => {
     try {
       setIsLoading(true);
 
-      // TODO ADD REGISTER AND LOGIN
-      await (() => 1)();
+      console.log("got hit");
 
-      registerModal.onClose();
+      await axiod.post("/api/auth/register", {
+        email,
+        password,
+        username,
+        name,
+      });
+
+      toast.success("New account registered!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+
+      //registerModal.onClose();
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Registration failed!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     } finally {
       setIsLoading(false);
+      registerModal.onClose();
     }
-  }, [registerModal]);
+  }, [registerModal, email, password, username, name]);
 
   const onToggle = useCallback(() => {
     if (isLoading) return;
