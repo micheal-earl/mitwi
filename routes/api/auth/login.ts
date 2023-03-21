@@ -5,7 +5,7 @@ import { setCookie } from "https://deno.land/std@0.178.0/http/cookie.ts";
 
 import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
-import validateUser from "../../../validators/user-login.ts";
+import validateUserForLogin from "../../../validators/user-login.ts";
 import key from "../../../utils/jwtkey.ts";
 
 interface UserForLogin {
@@ -56,6 +56,7 @@ export async function handler(req: Request, ctx: HandlerContext) {
   setCookie(myHeaders, {
     name: "jwt",
     value: jwt,
+    path: "/",
     httpOnly: true,
     secure: true,
     maxAge: 60 * 60 * 24 * 7, // expire time of one week
@@ -76,7 +77,7 @@ function validator(req: Request, body: unknown): Response | null {
   const validateMethodResp = validateMethod(req, "POST");
   if (validateMethodResp) return validateMethodResp;
 
-  const validateUserResp = validateUser(body);
+  const validateUserResp = validateUserForLogin(body);
   if (validateUserResp) return validateUserResp;
 
   return null;

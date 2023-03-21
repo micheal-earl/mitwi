@@ -5,13 +5,14 @@
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/api/auth/_middleware.ts";
+import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/api/auth/login.ts";
-import * as $4 from "./routes/api/auth/signup.ts";
-import * as $5 from "./routes/api/auth/test.ts";
+import * as $4 from "./routes/api/auth/me.ts";
+import * as $5 from "./routes/api/auth/register.ts";
 import * as $6 from "./routes/api/auth/users.ts";
-import * as $7 from "./routes/api/user.ts";
-import * as $8 from "./routes/index.tsx";
+import * as $7 from "./routes/api/test.ts";
+import * as $8 from "./routes/api/user.ts";
+import * as $9 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginModal.tsx";
 import * as $$1 from "./islands/RegisterModal.tsx";
 import * as $$2 from "./islands/SidebarTweetButton.tsx";
@@ -20,13 +21,14 @@ const manifest = {
   routes: {
     "./routes/[name].tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/api/auth/_middleware.ts": $2,
+    "./routes/_middleware.ts": $2,
     "./routes/api/auth/login.ts": $3,
-    "./routes/api/auth/signup.ts": $4,
-    "./routes/api/auth/test.ts": $5,
+    "./routes/api/auth/me.ts": $4,
+    "./routes/api/auth/register.ts": $5,
     "./routes/api/auth/users.ts": $6,
-    "./routes/api/user.ts": $7,
-    "./routes/index.tsx": $8,
+    "./routes/api/test.ts": $7,
+    "./routes/api/user.ts": $8,
+    "./routes/index.tsx": $9,
   },
   islands: {
     "./islands/LoginModal.tsx": $$0,

@@ -1,7 +1,7 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { verify } from "https://deno.land/x/djwt@v2.4/mod.ts";
 
-import key from "../../../utils/jwtkey.ts";
+import key from "../utils/jwtkey.ts";
 
 interface Token {
   id: string;

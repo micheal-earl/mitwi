@@ -7,7 +7,7 @@ export async function handler(req: Request, _ctx: HandlerContext) {
   const validateMethodResp = validateMethod(req, "GET");
   if (validateMethodResp) return validateMethodResp;
 
-  const users = await UserModel.find();
+  const users = await UserModel.find().select("-hashedPassword");
 
   return new Response(
     JSON.stringify(users),
