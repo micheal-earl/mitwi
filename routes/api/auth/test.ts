@@ -7,17 +7,17 @@ export function handler(req: Request, ctx: HandlerContext) {
   const validateMethodResp = validateMethod(req, "POST");
   if (validateMethodResp) return validateMethodResp;
 
-  const myHeaders = new Headers({
-    "Content-Type": "application/json",
-  });
+  // const myHeaders = new Headers({
+  //   "Content-Type": "application/json",
+  // });
 
-  setCookie(myHeaders, {
-    name: "jwt",
-    value: "hello",
-    httpOnly: true,
-    secure: true,
-    maxAge: 60 * 60 * 24 * 7, // expire time of one week
-  });
+  // setCookie(myHeaders, {
+  //   name: "jwt",
+  //   value: "hello",
+  //   httpOnly: true,
+  //   secure: true,
+  //   maxAge: 60 * 60 * 24 * 7, // expire time of one week
+  // });
 
   return new Response(
     JSON.stringify(ctx.state.body),

@@ -2,6 +2,7 @@ interface UserForSignup {
   username: string;
   email: string;
   password: string;
+  name?: string;
 }
 
 export default function validateUserForSignup(

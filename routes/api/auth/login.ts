@@ -8,11 +8,16 @@ import validateMethod from "../../../validators/method.ts";
 import validateUser from "../../../validators/user-login.ts";
 import key from "../../../utils/jwtkey.ts";
 
+interface UserForLogin {
+  username: string;
+  password: string;
+}
+
 export async function handler(req: Request, ctx: HandlerContext) {
   const validatorResp = validator(req, ctx.state.body);
   if (validatorResp) return validatorResp;
 
-  const { username, password } = ctx.state.body;
+  const { username, password } = ctx.state.body as UserForLogin;
 
   const existingUser = await UserModel.findOne({ username });
   if (!existingUser) {

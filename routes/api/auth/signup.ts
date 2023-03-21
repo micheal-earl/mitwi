@@ -4,13 +4,19 @@ import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
 import validateUser from "../../../validators/user-signup.ts";
-import key from "../../../utils/jwtkey.ts";
+
+interface UserForSignup {
+  username: string;
+  email: string;
+  password: string;
+  name?: string;
+}
 
 export async function handler(req: Request, ctx: HandlerContext) {
   const validatorResp = validator(req, ctx.state.body);
   if (validatorResp) return validatorResp;
 
-  const { username, email, password } = ctx.state.body;
+  const { username, name, email, password } = ctx.state.body as UserForSignup;
 
   const existingUser = await UserModel.findOne({ username });
   const existingEmail = await UserModel.findOne({ email });
@@ -29,6 +35,7 @@ export async function handler(req: Request, ctx: HandlerContext) {
   const newUser = new UserModel({
     username,
     email,
+    name,
     hashedPassword: hashedPassword,
   });
   await newUser.save();
