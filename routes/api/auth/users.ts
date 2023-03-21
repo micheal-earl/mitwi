@@ -1,4 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
+
 import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
 

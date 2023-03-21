@@ -1,8 +1,10 @@
 import { HandlerContext } from "$fresh/server.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
+
 import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
-import validateUser from "../../../validators/user.ts";
+import validateUser from "../../../validators/user-signup.ts";
+import key from "../../../utils/jwtkey.ts";
 
 export async function handler(req: Request, ctx: HandlerContext) {
   const validatorResp = validator(req, ctx.state.body);

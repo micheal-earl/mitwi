@@ -1,13 +1,13 @@
-interface User {
+interface UserForSignup {
   username: string;
   email: string;
   password: string;
 }
 
-export default function validateMethod(
+export default function validateUserForSignup(
   body: unknown,
 ): Response | null {
-  const { username, email, password } = body as User;
+  const { username, email, password } = body as UserForSignup;
   if (!username || !email || !password) {
     const resp = new Response(
       JSON.stringify({
