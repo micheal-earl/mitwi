@@ -7,18 +7,18 @@ interface HeaderProps {
 }
 
 const Header: FunctionalComponent<HeaderProps> = ({ label, showBackArrow }) => {
-  const handleBack = () => {};
   return (
     <div class="border-b-[1px] border-gray-400 border-opacity-30 p-5">
       <div class="flex flex-row items-center gap-2">
-        {showBackArrow && (
-          <BiArrowBack
-            onClick={handleBack}
-            color="white"
-            size={20}
-            class="cursor-pointer hover:opacity-70 transition"
-          />
-        )}
+        <a href="/">
+          {showBackArrow && (
+            <BiArrowBack
+              color="white"
+              size={20}
+              class="cursor-pointer hover:opacity-70 transition"
+            />
+          )}
+        </a>
         <h1 class="text-white text-xl font-semibold">{label}</h1>
       </div>
     </div>

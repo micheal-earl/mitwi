@@ -10,8 +10,6 @@ const useUsers = () => {
     mutate,
   } = useSWR("/api/users/all", fetcher);
 
-  console.log("USE USERS HOOK: ", data);
-
   return { data, error, isLoading, mutate };
 };
 

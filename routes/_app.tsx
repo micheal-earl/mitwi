@@ -13,6 +13,7 @@ export default function App({ Component }: AppProps) {
       <Head>
         <title>Mitwi Twitter Clone</title>
         <link rel="stylesheet" href={asset("base.css")} />
+        <link rel="stylesheet" href={asset("skeleton.css")} />
         <link rel="stylesheet" href={asset("ReactToastify.min.css")} />
       </Head>
       <Toast />
