@@ -7,15 +7,17 @@ import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/api/auth/login.ts";
-import * as $4 from "./routes/api/auth/register.ts";
-import * as $5 from "./routes/api/echo.ts";
-import * as $6 from "./routes/api/me.ts";
-import * as $7 from "./routes/api/users.ts";
-import * as $8 from "./routes/index.tsx";
+import * as $4 from "./routes/api/auth/logout.ts";
+import * as $5 from "./routes/api/auth/register.ts";
+import * as $6 from "./routes/api/echo.ts";
+import * as $7 from "./routes/api/me.ts";
+import * as $8 from "./routes/api/users.ts";
+import * as $9 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginModal.tsx";
 import * as $$1 from "./islands/RegisterModal.tsx";
-import * as $$2 from "./islands/SidebarTweetButton.tsx";
-import * as $$3 from "./islands/Toast.tsx";
+import * as $$2 from "./islands/Sidebar.tsx";
+import * as $$3 from "./islands/SidebarTweetButton.tsx";
+import * as $$4 from "./islands/Toast.tsx";
 
 const manifest = {
   routes: {
@@ -23,17 +25,19 @@ const manifest = {
     "./routes/_app.tsx": $1,
     "./routes/_middleware.ts": $2,
     "./routes/api/auth/login.ts": $3,
-    "./routes/api/auth/register.ts": $4,
-    "./routes/api/echo.ts": $5,
-    "./routes/api/me.ts": $6,
-    "./routes/api/users.ts": $7,
-    "./routes/index.tsx": $8,
+    "./routes/api/auth/logout.ts": $4,
+    "./routes/api/auth/register.ts": $5,
+    "./routes/api/echo.ts": $6,
+    "./routes/api/me.ts": $7,
+    "./routes/api/users.ts": $8,
+    "./routes/index.tsx": $9,
   },
   islands: {
     "./islands/LoginModal.tsx": $$0,
     "./islands/RegisterModal.tsx": $$1,
-    "./islands/SidebarTweetButton.tsx": $$2,
-    "./islands/Toast.tsx": $$3,
+    "./islands/Sidebar.tsx": $$2,
+    "./islands/SidebarTweetButton.tsx": $$3,
+    "./islands/Toast.tsx": $$4,
   },
   baseUrl: import.meta.url,
   config,

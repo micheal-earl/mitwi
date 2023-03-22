@@ -5,11 +5,25 @@ import {
 } from "https://esm.sh/react-icons@4.8.0/bs?alias=react:preact/compat";
 import { BiLogOut } from "https://esm.sh/react-icons@4.8.0/bi?alias=react:preact/compat";
 import { FaUser } from "https://esm.sh/react-icons@4.8.0/fa?alias=react:preact/compat";
-import SidebarLogo from "./SidebarLogo.tsx";
-import SidebarItem from "./SidebarItem.tsx";
-import SidebarTweetButton from "../../islands/SidebarTweetButton.tsx";
+import axiod from "https://deno.land/x/axiod@0.26.2/mod.ts";
+
+import SidebarLogo from "../components/layout/SidebarLogo.tsx";
+import SidebarItem from "../components/layout/SidebarItem.tsx";
+import SidebarTweetButton from "./SidebarTweetButton.tsx";
+import useCurrentUser from "../hooks/useCurrentUser.ts";
 
 const Sidebar: FunctionalComponent = () => {
+  const { data: currentUser } = useCurrentUser();
+
+  const logOut = async () => {
+    try {
+      await axiod.post("/api/auth/logout");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const items = [
     {
       label: "Home",
@@ -40,7 +54,9 @@ const Sidebar: FunctionalComponent = () => {
               icon={item.icon}
             />
           ))}
-          <SidebarItem onClick={() => {}} icon={BiLogOut} label="Logout" />
+          {currentUser && (
+            <SidebarItem onClick={logOut} icon={BiLogOut} label="Logout" />
+          )}
           <SidebarTweetButton />
         </div>
       </div>

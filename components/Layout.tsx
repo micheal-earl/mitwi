@@ -1,5 +1,5 @@
 import { FunctionalComponent, VNode } from "preact";
-import Sidebar from "./layout/Sidebar.tsx";
+import Sidebar from "../islands/Sidebar.tsx";
 import FollowBar from "./layout/FollowBar.tsx";
 
 interface LayoutProps {

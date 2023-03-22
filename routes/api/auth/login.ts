@@ -1,6 +1,6 @@
 import { HandlerContext } from "$fresh/server.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
-import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
+import { create, getNumericDate } from "https://deno.land/x/djwt@v2.4/mod.ts";
 import { setCookie } from "https://deno.land/std@0.178.0/http/cookie.ts";
 
 import UserModel from "../../../models/User.ts";
@@ -45,6 +45,7 @@ export async function handler(req: Request, ctx: HandlerContext) {
   const payload = {
     id: existingUser._id,
     name: username,
+    exp: getNumericDate(60 * 60 * 24 * 7),
   };
   const jwt = await create({ alg: "HS512", typ: "JWT" }, { payload }, key);
 
