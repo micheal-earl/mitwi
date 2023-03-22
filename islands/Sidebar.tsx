@@ -17,6 +17,7 @@ const Sidebar: FunctionalComponent = () => {
 
   const logOut = async () => {
     try {
+      console.log(currentUser);
       await axiod.post("/api/auth/logout");
       window.location.reload();
     } catch (error) {
@@ -34,11 +35,13 @@ const Sidebar: FunctionalComponent = () => {
       label: "Notifications",
       href: "/notifications",
       icon: BsBellFill,
+      auth: true,
     },
     {
       label: "Profile",
       href: "/users/123",
       icon: FaUser,
+      auth: true,
     },
   ];
   return (
@@ -52,6 +55,7 @@ const Sidebar: FunctionalComponent = () => {
               href={item.href}
               label={item.label}
               icon={item.icon}
+              auth={item.auth}
             />
           ))}
           {currentUser && (

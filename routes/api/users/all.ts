@@ -1,7 +1,7 @@
 import { HandlerContext } from "$fresh/server.ts";
 
-import UserModel from "../../models/User.ts";
-import validateMethod from "../../validators/method.ts";
+import UserModel from "../../../models/User.ts";
+import validateMethod from "../../../validators/method.ts";
 
 export async function handler(req: Request, _ctx: HandlerContext) {
   const validateMethodResp = validateMethod(req, "GET");
