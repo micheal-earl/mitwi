@@ -2,7 +2,7 @@ import useSWR from "https://esm.sh/swr@2.1.0?alias=react:preact/compat&deps=prea
 
 import fetcher from "../utils/fetcher.ts";
 
-const useCurrentUser = (id: string) => {
+const useUser = (id: string) => {
   const {
     data,
     error,
@@ -13,4 +13,4 @@ const useCurrentUser = (id: string) => {
   return { data, error, isLoading, mutate };
 };
 
-export default useCurrentUser;
+export default useUser;

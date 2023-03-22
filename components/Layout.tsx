@@ -1,6 +1,6 @@
 import { FunctionalComponent, VNode } from "preact";
 import Sidebar from "../islands/Sidebar.tsx";
-import FollowBar from "./layout/FollowBar.tsx";
+import FollowBar from "../islands/FollowBar.tsx";
 
 interface LayoutProps {
   children: VNode;

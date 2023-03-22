@@ -14,11 +14,12 @@ import * as $7 from "./routes/api/users/all.ts";
 import * as $8 from "./routes/api/users/id/[id].ts";
 import * as $9 from "./routes/api/users/me.ts";
 import * as $10 from "./routes/index.tsx";
-import * as $$0 from "./islands/LoginModal.tsx";
-import * as $$1 from "./islands/RegisterModal.tsx";
-import * as $$2 from "./islands/Sidebar.tsx";
-import * as $$3 from "./islands/SidebarTweetButton.tsx";
-import * as $$4 from "./islands/Toast.tsx";
+import * as $$0 from "./islands/FollowBar.tsx";
+import * as $$1 from "./islands/LoginModal.tsx";
+import * as $$2 from "./islands/RegisterModal.tsx";
+import * as $$3 from "./islands/Sidebar.tsx";
+import * as $$4 from "./islands/SidebarTweetButton.tsx";
+import * as $$5 from "./islands/Toast.tsx";
 
 const manifest = {
   routes: {
@@ -35,11 +36,12 @@ const manifest = {
     "./routes/index.tsx": $10,
   },
   islands: {
-    "./islands/LoginModal.tsx": $$0,
-    "./islands/RegisterModal.tsx": $$1,
-    "./islands/Sidebar.tsx": $$2,
-    "./islands/SidebarTweetButton.tsx": $$3,
-    "./islands/Toast.tsx": $$4,
+    "./islands/FollowBar.tsx": $$0,
+    "./islands/LoginModal.tsx": $$1,
+    "./islands/RegisterModal.tsx": $$2,
+    "./islands/Sidebar.tsx": $$3,
+    "./islands/SidebarTweetButton.tsx": $$4,
+    "./islands/Toast.tsx": $$5,
   },
   baseUrl: import.meta.url,
   config,
