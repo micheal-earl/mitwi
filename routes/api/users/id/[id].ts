@@ -1,15 +1,13 @@
 import { HandlerContext } from "$fresh/server.ts";
 
-import UserModel from "../../../models/User.ts";
-import validateMethod from "../../../validators/method.ts";
+import UserModel from "../../../../models/User.ts";
+import validateMethod from "../../../../validators/method.ts";
 
 export async function handler(req: Request, ctx: HandlerContext) {
-  const validateMethodResp = validateMethod(req, "POST");
+  const validateMethodResp = validateMethod(req, "GET");
   if (validateMethodResp) return validateMethodResp;
 
-  console.log(ctx.state.body);
-
-  const id = ctx.state.body.id;
+  const id = ctx.params.id;
   if (!id || typeof id !== "string") {
     return new Response(
       JSON.stringify({ error: "Incorrect id format" }),

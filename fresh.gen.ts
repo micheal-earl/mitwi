@@ -11,7 +11,7 @@ import * as $4 from "./routes/api/auth/logout.ts";
 import * as $5 from "./routes/api/auth/register.ts";
 import * as $6 from "./routes/api/echo.ts";
 import * as $7 from "./routes/api/users/all.ts";
-import * as $8 from "./routes/api/users/id.ts";
+import * as $8 from "./routes/api/users/id/[id].ts";
 import * as $9 from "./routes/api/users/me.ts";
 import * as $10 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginModal.tsx";
@@ -30,7 +30,7 @@ const manifest = {
     "./routes/api/auth/register.ts": $5,
     "./routes/api/echo.ts": $6,
     "./routes/api/users/all.ts": $7,
-    "./routes/api/users/id.ts": $8,
+    "./routes/api/users/id/[id].ts": $8,
     "./routes/api/users/me.ts": $9,
     "./routes/index.tsx": $10,
   },
