@@ -68,7 +68,6 @@ const LoginModal: FunctionalComponent = () => {
         onChange={(e) => {
           if (e.target instanceof HTMLInputElement) {
             setUsername(e.target.value);
-            console.log(username);
           }
         }}
         value={username}
@@ -80,7 +79,6 @@ const LoginModal: FunctionalComponent = () => {
         onChange={(e) => {
           if (e.target instanceof HTMLInputElement) {
             setPassword(e.target.value);
-            console.log("pass: ", password);
           }
         }}
         value={password}

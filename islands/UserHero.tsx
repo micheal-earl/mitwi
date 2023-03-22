@@ -13,11 +13,11 @@ const UserHero: FunctionalComponent<UserHeroProps> = ({ userId }) => {
   return (
     <div>
       <div className="bg-trueGray-700 h-44 relative">
-        {fetchedUser?.coverImage && (
+        {fetchedUser?.user.coverImage && (
           <img
-            src={fetchedUser.coverImage}
+            src={fetchedUser.user.coverImage}
             alt="Cover Image"
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", height: "100%", width: "100%" }}
           />
         )}
         <div className="absolute -bottom-16 left-4">

@@ -1,4 +1,7 @@
-import Skeleton from "https://esm.sh/react-loading-skeleton@3.2.0?alias=react:preact/compat&deps=preact@10.11.0";
+import {
+  SpinnerCircular,
+  SpinnerRoundFilled,
+} from "https://esm.sh/spinners-react?alias=react:preact/compat&deps=preact@10.11.0";
 
 import UserHero from "./UserHero.tsx";
 import useUser from "../hooks/useUser.ts";
@@ -9,8 +12,13 @@ const UserIsland = ({ userId }) => {
 
   if (isLoading || !fetchedUser) {
     return (
-      <div className="flex justify-center items-center h-full">
-        <Skeleton count={5} />
+      <div className="flex justify-center items-center h-full pt-10">
+        <SpinnerRoundFilled
+          thickness={125}
+          speed={200}
+          color="#3498db"
+          style={{ width: "60%" }}
+        />
       </div>
     );
   }

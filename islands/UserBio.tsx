@@ -6,7 +6,7 @@ import { format } from "https://esm.sh/date-fns@2.29.3";
 import useCurrentUser from "../hooks/useCurrentUser.ts";
 import useUser from "../hooks/useUser.ts";
 // import useFollow from "../hooks/useFollow.ts";
-// import useEditModal from "../hooks/useEditModal.ts";
+import useEditModal from "../hooks/useEditModal.ts";
 import Button from "../components/Button.tsx";
 
 interface UserBioProps {
@@ -17,7 +17,7 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
 
-  // const editModal = useEditModal();
+  const editModal = useEditModal();
 
   // const { isFollowing, toggleFollow } = useFollow(userId);
 
@@ -30,20 +30,15 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
   }, [fetchedUser?.user.createdAt]);
 
   return (
-    <div className="border-b-[1px] border-gray-400 border-opacity-30 pb-4 pt-6">
+    <div className="border-b-[1px] border-gray-400 border-opacity-30 pb-4">
       <div className="flex justify-end p-2">
-        {
-          /* {currentUser?.id === userId
+        {currentUser?._id === userId
           ? <Button secondary label="Edit" onClick={editModal.onOpen} />
           : (
             <Button
-              onClick={toggleFollow}
-              label={isFollowing ? "Unfollow" : "Follow"}
-              secondary={!isFollowing}
-              outline={isFollowing}
+              label={false ? "Unfollow" : "Follow"}
             />
-          )} */
-        }
+          )}
       </div>
       <div className="mt-8 px-4">
         <div className="flex flex-col">
@@ -74,7 +69,9 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
         </div>
         <div className="flex flex-row items-center mt-4 gap-6">
           <div className="flex flex-row items-center gap-1">
-            <p className="text-white">{fetchedUser?.followingIds?.length}</p>
+            <p className="text-white">
+              {fetchedUser?.user.followingIds?.length}
+            </p>
             <p className="text-trueGray-400">Following</p>
           </div>
           <div className="flex flex-row items-center gap-1">

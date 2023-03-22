@@ -46,7 +46,7 @@ const Avatar: FunctionalComponent<AvatarProps> = (
           }}
           alt="Avatar"
           onClick={onClick}
-          src={fetchedUser?.profileImage || "/placeholder.png"}
+          src={fetchedUser?.user.profileImage || "/placeholder.png"}
         />
       }
     </div>

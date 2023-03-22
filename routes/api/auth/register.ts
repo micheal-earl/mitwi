@@ -3,7 +3,7 @@ import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 
 import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
-import validateUser from "../../../validators/user-register.ts";
+import validateUserForRegister from "../../../validators/user-register.ts";
 
 interface UserForRegister {
   username: string;
@@ -47,7 +47,7 @@ function validator(req: Request, body: unknown): Response | null {
   const validateMethodResp = validateMethod(req, "POST");
   if (validateMethodResp) return validateMethodResp;
 
-  const validateUserResp = validateUser(body);
+  const validateUserResp = validateUserForRegister(body);
   if (validateUserResp) return validateUserResp;
 
   return null;

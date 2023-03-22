@@ -21,7 +21,9 @@ export async function handler(req: Request, ctx: HandlerContext) {
   try {
     const user = await UserModel.findById(id).select("-hashedPassword");
     if (user) {
-      const followersCount = user.followingIds.length;
+      const followersCount = await UserModel.countDocuments({
+        followingIds: { $in: [id] },
+      });
       return new Response(
         JSON.stringify({ user, followersCount }),
         {

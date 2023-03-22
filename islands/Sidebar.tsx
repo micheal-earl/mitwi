@@ -39,7 +39,7 @@ const Sidebar: FunctionalComponent = () => {
     },
     {
       label: "Profile",
-      href: "/users/123",
+      href: `/users/${currentUser?._id}`,
       icon: FaUser,
       auth: true,
     },
