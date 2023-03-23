@@ -5,10 +5,10 @@ import { format } from "https://esm.sh/date-fns@2.29.3";
 
 import useCurrentUser from "../hooks/useCurrentUser.ts";
 import useUser from "../hooks/useUser.ts";
-// import useFollow from "../hooks/useFollow.ts";
 import useEditModal from "../hooks/useEditModal.ts";
 import Button from "../components/Button.tsx";
 import useLoginModal from "../hooks/useLoginModal.ts";
+import useFollow from "../hooks/useFollow.ts";
 
 interface UserBioProps {
   userId: string;
@@ -21,7 +21,7 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
   const editModal = useEditModal();
   const loginModal = useLoginModal();
 
-  // const { isFollowing, toggleFollow } = useFollow(userId);
+  const { isFollowing, toggleFollow } = useFollow(userId);
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.user.createdAt) {
@@ -39,7 +39,10 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
             ? <Button secondary label="Edit" onClick={editModal.onOpen} />
             : (
               <Button
-                label={false ? "Unfollow" : "Follow"}
+                label={isFollowing ? "Unfollow" : "Follow"}
+                onClick={toggleFollow}
+                secondary={!isFollowing}
+                outline={isFollowing}
               />
             )
           : <Button label="Follow" onClick={loginModal.onOpen} />}

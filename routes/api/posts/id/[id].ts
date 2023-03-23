@@ -19,7 +19,7 @@ export async function handler(req: Request, ctx: HandlerContext) {
   }
 
   try {
-    const post = await PostModel.findById(id);
+    const post = await PostModel.findById(id).populate("user");
 
     return new Response(
       JSON.stringify(post),

@@ -9,7 +9,7 @@ import { formatDistanceToNowStrict } from "https://esm.sh/date-fns@2.29.3";
 
 import useLoginModal from "../../hooks/useLoginModal.ts";
 import useCurrentUser from "../../hooks/useCurrentUser.ts";
-//import useLike from "../../hooks/useLike.ts";
+import useLike from "../../hooks/useLike.ts";
 import Avatar from "../Avatar.tsx";
 
 interface PostItemProps {
@@ -23,9 +23,7 @@ const PostItem: FunctionalComponent<PostItemProps> = (
   const loginModal = useLoginModal();
 
   const { data: currentUser } = useCurrentUser();
-  //const { hasLiked, toggleLike } = useLike({ postId: data.id, userId });
-  const hasLiked = false;
-  const toggleLike = false;
+  const { hasLiked, toggleLike } = useLike({ postId: data._id, userId });
 
   const goToUser = useCallback((ev: any) => {
     ev.stopPropagation();
@@ -43,7 +41,7 @@ const PostItem: FunctionalComponent<PostItemProps> = (
       return loginModal.onOpen();
     }
 
-    //toggleLike();
+    toggleLike();
   }, [loginModal, currentUser, toggleLike]);
 
   const LikeIcon = hasLiked ? AiFillHeart : AiOutlineHeart;
