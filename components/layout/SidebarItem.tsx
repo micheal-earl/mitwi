@@ -1,6 +1,8 @@
 import { IconType } from "https://esm.sh/react-icons@4.8.0?alias=react:preact/compat";
 import { FunctionalComponent } from "preact";
 import { useCallback } from "preact/hooks";
+import { BsBellFill } from "https://esm.sh/react-icons@4.8.0/bs?alias=react:preact/compat";
+
 import useCurrentUser from "../../hooks/useCurrentUser.ts";
 import useLoginModal from "../../hooks/useLoginModal.ts";
 
@@ -10,6 +12,7 @@ interface SidebarItemProps {
   icon: IconType;
   onClick?: () => void;
   auth?: boolean;
+  alert?: boolean;
 }
 
 const SidebarItem: FunctionalComponent<SidebarItemProps> = ({
@@ -18,6 +21,7 @@ const SidebarItem: FunctionalComponent<SidebarItemProps> = ({
   icon: Icon,
   onClick,
   auth,
+  alert,
 }) => {
   const loginModal = useLoginModal();
   const { data: currentUser } = useCurrentUser();
@@ -49,7 +53,9 @@ const SidebarItem: FunctionalComponent<SidebarItemProps> = ({
           cursor-pointer 
           lg:hidden
         ">
-        <Icon size={28} color="white" />
+        {alert
+          ? <BsBellFill size={28} color="skyblue" />
+          : <Icon size={28} color="white" />}
       </div>
       <div class="
           relative 
@@ -62,7 +68,9 @@ const SidebarItem: FunctionalComponent<SidebarItemProps> = ({
           hover:bg-gray-900
           cursor-pointer 
         ">
-        <Icon size={24} color="white" />
+        {alert
+          ? <BsBellFill size={28} color="skyblue" />
+          : <Icon size={28} color="white" />}
         <p class="hidden lg:block text-white text-xl">{label}</p>
       </div>
     </div>

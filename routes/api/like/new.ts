@@ -1,6 +1,8 @@
 import { HandlerContext } from "$fresh/server.ts";
 
 import PostModel from "../../../models/Post.ts";
+import NotificationModel from "../../../models/Notification.ts";
+import UserModel from "../../../models/User.ts";
 import validateMethod from "../../../validators/method.ts";
 
 interface Token {
@@ -51,6 +53,31 @@ export async function handler(req: Request, ctx: HandlerContext) {
     post.likedIds.push(token.id);
     await post.save();
   }
+
+  // NOTIFICATION PART START
+  try {
+    const post = await PostModel.findById(postId);
+
+    if (post?.user) {
+      console.log("post has user");
+      const notif = new NotificationModel({
+        body: "Someone liked your tweet!",
+        user: post.user,
+      });
+
+      await notif.save();
+
+      const user = await UserModel.findById(post.user);
+      if (user) {
+        console.log("We found user");
+        user.hasNotification = true;
+        await user.save();
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  // NOTIFICATION PART END
 
   return new Response(
     JSON.stringify({ message: "Successfully liked post!" }),

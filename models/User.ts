@@ -1,18 +1,33 @@
-import { model, Schema } from "npm:mongoose@7.0.2";
+import { Document, model, Schema, Types } from "npm:mongoose@7.0.2";
+
+interface IUser extends Document {
+  name: string;
+  username: string;
+  email: string;
+  hashedPassword: string;
+  bio: string;
+  coverImage: string;
+  profileImage: string;
+  followingIds: string[];
+  hasNotification: boolean;
+  posts: Types.ObjectId[];
+  likes: Types.ObjectId[];
+  notifications: Types.ObjectId[];
+}
 
 // Define schema.
-const userSchema = new Schema(
+const userSchema: Schema<IUser> = new Schema(
   {
     name: String,
     username: { type: String, maxLength: 25, unique: true, required: true },
     email: { type: String, maxLength: 25, unique: true, required: true },
     hashedPassword: { type: String, required: true },
     bio: String,
-    emailVerified: Date,
+    // emailVerified: Date,
     coverImage: String,
     profileImage: String,
     followingIds: [{ type: String }],
-    hasNotification: Boolean,
+    hasNotification: { type: Boolean, default: false },
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
     likes: [{ type: Schema.Types.ObjectId, ref: "Post" }],
     //comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
@@ -36,4 +51,4 @@ const userSchema = new Schema(
 // });
 
 // Export model.
-export default model("User", userSchema);
+export default model<IUser>("User", userSchema);

@@ -35,6 +35,7 @@ const Sidebar: FunctionalComponent = () => {
       href: "/notifications",
       icon: BsBellFill,
       auth: true,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Profile",
@@ -51,6 +52,7 @@ const Sidebar: FunctionalComponent = () => {
           {items.map((item) => (
             <SidebarItem
               key={item.href}
+              alert={item.alert}
               href={item.href}
               label={item.label}
               icon={item.icon}
