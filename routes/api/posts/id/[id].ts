@@ -1,6 +1,7 @@
 import { HandlerContext } from "$fresh/server.ts";
 
 import PostModel from "../../../../models/Post.ts";
+import CommentModel from "../../../../models/Comment.ts";
 import validateMethod from "../../../../validators/method.ts";
 
 export async function handler(req: Request, ctx: HandlerContext) {
@@ -19,8 +20,7 @@ export async function handler(req: Request, ctx: HandlerContext) {
   }
 
   try {
-    const post = await PostModel.findById(id).populate("user");
-
+    const post = await PostModel.findById(id).populate(["user", "comments"]);
     return new Response(
       JSON.stringify(post),
       {

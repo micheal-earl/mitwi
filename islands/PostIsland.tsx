@@ -4,10 +4,14 @@ import {
 
 import PostItem from "../components/posts/PostItem.tsx";
 import usePost from "../hooks/usePost.ts";
+import CommentFeed from "./CommentFeed.tsx";
 import Form from "./Form.tsx";
 
 const UserIsland = ({ postId }) => {
   const { data: fetchedPost, isLoading } = usePost(postId as string);
+  // const { data: fetchedComments, isLoading: isCommentsLoading } = useComments(
+  //   postId as string,
+  // );
 
   if (isLoading || !fetchedPost) {
     return (
@@ -24,13 +28,13 @@ const UserIsland = ({ postId }) => {
 
   return (
     <div>
-      {console.log(fetchedPost)}
       <PostItem data={fetchedPost} />
       <Form
         postId={postId as string}
         isComment
-        placeholder="Leave a comment"
+        placeholder="Tweet your reply"
       />
+      <CommentFeed comments={fetchedPost?.comments} isLoading={isLoading} />
     </div>
   );
 };

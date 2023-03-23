@@ -1,6 +1,8 @@
 import { HandlerContext } from "$fresh/server.ts";
 
 import CommentModel from "../../../../models/Comment.ts";
+import PostModel from "../../../../models/Post.ts";
+import UserModel from "../../../../models/User.ts";
 import validateMethod from "../../../../validators/method.ts";
 
 interface Token {
@@ -46,7 +48,15 @@ export async function handler(req: Request, ctx: HandlerContext) {
     post: postId,
     user: token.id,
   });
+
+  const user = await UserModel.findById(token.id);
+  newComment.user = user;
+
+  const post = await PostModel.findById(postId);
+  post.comments.push(newComment._id);
+
   await newComment.save();
+  await post.save();
 
   return new Response(JSON.stringify(ctx.state.body));
 }

@@ -17,7 +17,6 @@ const Sidebar: FunctionalComponent = () => {
 
   const logOut = async () => {
     try {
-      console.log(currentUser);
       await axiod.post("/api/auth/logout");
       window.location.reload();
     } catch (error) {

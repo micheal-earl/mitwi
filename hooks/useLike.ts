@@ -47,8 +47,6 @@ const useLike = ({ postId, userId }: useLikeObj) => {
     try {
       let request;
 
-      console.log({ postId });
-
       if (hasLiked) {
         request = () => axiod.delete(`/api/like/delete`, { postId: postId });
       } else {

@@ -1,12 +1,8 @@
 import { HandlerContext } from "$fresh/server.ts";
 
 import CommentModel from "../../../../models/Comment.ts";
+import PostModel from "../../../../models/Post.ts";
 import validateMethod from "../../../../validators/method.ts";
-
-interface Token {
-  id: string;
-  name: string;
-}
 
 // ctx.params.id refers to the post id that this comment will be
 // created under. This structure was necessary because I can't
@@ -28,22 +24,13 @@ export async function handler(req: Request, ctx: HandlerContext) {
     );
   }
 
-  try {
-    const posts = await CommentModel.find({ post: postId });
+  const comments = CommentModel.find({ post: postId }).select("-user").lean()
+    .exec();
 
-    return new Response(
-      JSON.stringify(posts),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      },
-    );
-  } catch {
-    return new Response(
-      JSON.stringify({ error: "Cannot find post by provided ID" }),
-      {
-        status: 409,
-      },
-    );
-  }
+  // const postWithUser = PostModel.findById(postId).populate("user");
+
+  // const user = postWithUser.user;
+
+  // return new Response(JSON.stringify({ comments, user }));
+  return new Response(JSON.stringify(comments));
 }

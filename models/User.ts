@@ -15,7 +15,7 @@ const userSchema = new Schema(
     hasNotification: Boolean,
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
     likes: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    //comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     notifications: [{
       type: Schema.Types.ObjectId,
       ref: "Notification",
@@ -24,16 +24,16 @@ const userSchema = new Schema(
   { timestamps: true },
 );
 
-userSchema.pre("remove", async function (next) {
-  try {
-    await this.model("Post").deleteMany({ user: this._id });
-    await this.model("Comment").deleteMany({ user: this._id });
-    await this.model("Notification").deleteMany({ user: this._id });
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
+// userSchema.pre("remove", async function (next) {
+//   try {
+//     await this.model("Post").deleteMany({ user: this._id });
+//     await this.model("Comment").deleteMany({ user: this._id });
+//     await this.model("Notification").deleteMany({ user: this._id });
+//     next();
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // Export model.
 export default model("User", userSchema);

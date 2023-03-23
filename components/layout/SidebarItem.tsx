@@ -30,8 +30,6 @@ const SidebarItem: FunctionalComponent<SidebarItemProps> = ({
     if (auth && !currentUser) {
       loginModal.onOpen();
     } else if (href) {
-      console.log(currentUser);
-      console.log(auth);
       window.location.assign(href);
     }
   }, [onClick, loginModal, auth, currentUser]);

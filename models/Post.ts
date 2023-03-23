@@ -12,14 +12,14 @@ const postSchema = new Schema(
   { timestamps: true },
 );
 
-postSchema.pre("remove", async function (next) {
-  try {
-    await this.model("Comment").deleteMany({ post: this._id });
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
+// postSchema.pre("remove", async function (next) {
+//   try {
+//     await this.model("Comment").deleteMany({ post: this._id });
+//     next();
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // Export model.
 export default model("Post", postSchema);
