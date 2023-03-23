@@ -1,11 +1,11 @@
 import {
-  SpinnerCircular,
   SpinnerRoundFilled,
-} from "https://esm.sh/spinners-react?alias=react:preact/compat&deps=preact@10.11.0";
+} from "https://esm.sh/spinners-react@1.0.7?alias=react:preact/compat&deps=preact@10.11.0";
 
 import UserHero from "./UserHero.tsx";
 import useUser from "../hooks/useUser.ts";
 import UserBio from "./UserBio.tsx";
+import PostFeed from "./PostFeed.tsx";
 
 const UserIsland = ({ userId }) => {
   const { data: fetchedUser, isLoading } = useUser(userId as string);
@@ -27,7 +27,7 @@ const UserIsland = ({ userId }) => {
     <div>
       <UserHero userId={userId as string} />
       <UserBio userId={userId as string} />
-      {/* <PostFeed userId={userId as string} /> */}
+      <PostFeed userId={userId as string} />
     </div>
   );
 };

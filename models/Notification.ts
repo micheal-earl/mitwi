@@ -10,4 +10,4 @@ const notificationSchema = new Schema(
 );
 
 // Export model.
-export default model("User", notificationSchema);
+export default model("Notification", notificationSchema);

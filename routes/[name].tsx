@@ -6,9 +6,8 @@ export default function Greet(props: PageProps) {
   return (
     <>
       <Header showBackArrow={true} label="User Profile" />
-      <div class="text-blue-500">
-        Hello {props.params.name}
-        <SidebarLogo />
+      <div class="text-3xl text-blue-400 p-5">
+        404, {props.params.name} not found
       </div>
     </>
   );

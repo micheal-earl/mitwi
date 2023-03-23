@@ -10,10 +10,12 @@ import Input from "../components/Input.tsx";
 import Modal from "../components/Modal.tsx";
 import useLoginModal from "../hooks/useLoginModal.ts";
 import useRegisterModal from "../hooks/useRegisterModal.ts";
+import useCurrentUser from "../hooks/useCurrentUser.ts";
 
 const LoginModal: FunctionalComponent = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const { mutate: mutateCurrentUser } = useCurrentUser();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -45,6 +47,7 @@ const LoginModal: FunctionalComponent = () => {
       });
 
       toast.success("Logged in!", toastOptions);
+      mutateCurrentUser();
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong!", toastOptions);

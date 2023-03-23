@@ -22,4 +22,4 @@ postSchema.pre("remove", async function (next) {
 });
 
 // Export model.
-export default model("User", postSchema);
+export default model("Post", postSchema);

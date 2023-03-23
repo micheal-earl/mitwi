@@ -8,6 +8,7 @@ import useUser from "../hooks/useUser.ts";
 // import useFollow from "../hooks/useFollow.ts";
 import useEditModal from "../hooks/useEditModal.ts";
 import Button from "../components/Button.tsx";
+import useLoginModal from "../hooks/useLoginModal.ts";
 
 interface UserBioProps {
   userId: string;
@@ -18,6 +19,7 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
   const { data: fetchedUser } = useUser(userId);
 
   const editModal = useEditModal();
+  const loginModal = useLoginModal();
 
   // const { isFollowing, toggleFollow } = useFollow(userId);
 
@@ -32,13 +34,15 @@ const UserBio: FunctionalComponent<UserBioProps> = ({ userId }) => {
   return (
     <div className="border-b-[1px] border-gray-400 border-opacity-30 pb-4">
       <div className="flex justify-end p-2">
-        {currentUser?._id === userId
-          ? <Button secondary label="Edit" onClick={editModal.onOpen} />
-          : (
-            <Button
-              label={false ? "Unfollow" : "Follow"}
-            />
-          )}
+        {currentUser
+          ? currentUser?._id === userId
+            ? <Button secondary label="Edit" onClick={editModal.onOpen} />
+            : (
+              <Button
+                label={false ? "Unfollow" : "Follow"}
+              />
+            )
+          : <Button label="Follow" onClick={loginModal.onOpen} />}
       </div>
       <div className="mt-8 px-4">
         <div className="flex flex-col">

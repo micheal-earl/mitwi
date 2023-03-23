@@ -1,7 +1,7 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { verify } from "https://deno.land/x/djwt@v2.4/mod.ts";
 
-import key from "../utils/jwtkey.ts";
+import key from "../../utils/jwtkey.ts";
 
 interface Token {
   id: string;
@@ -55,8 +55,6 @@ function log(req: Request, token: Token | null): void {
   if (token) console.log("🔑 Verified Request", token);
   if (!token) console.error("🔒 Unverified Request");
   console.log(
-    `[${timestamp}] 🌐 New ${req.method} request from ${
-      req.headers.get("Host")
-    } -> ${req.url}`,
+    `[${timestamp}] 🌐 API ${req.method} req -> ${req.url}`,
   );
 }

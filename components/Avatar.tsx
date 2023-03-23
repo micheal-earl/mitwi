@@ -1,5 +1,3 @@
-import { asset } from "$fresh/runtime.ts";
-//import Image from "next/image";
 import { FunctionalComponent } from "preact";
 import { useCallback } from "preact/hooks";
 
@@ -43,6 +41,8 @@ const Avatar: FunctionalComponent<AvatarProps> = (
           style={{
             objectFit: "cover",
             borderRadius: "100%",
+            width: "100%",
+            height: "100%",
           }}
           alt="Avatar"
           onClick={onClick}

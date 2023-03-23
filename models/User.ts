@@ -4,8 +4,8 @@ import { model, Schema } from "npm:mongoose@7.0.2";
 const userSchema = new Schema(
   {
     name: String,
-    username: { type: String, unique: true, required: true },
-    email: { type: String, unique: true, required: true },
+    username: { type: String, maxLength: 25, unique: true, required: true },
+    email: { type: String, maxLength: 25, unique: true, required: true },
     hashedPassword: { type: String, required: true },
     bio: String,
     emailVerified: Date,

@@ -10,9 +10,11 @@ import useRegisterModal from "../hooks/useRegisterModal.ts";
 import useLoginModal from "../hooks/useLoginModal.ts";
 import Input from "../components/Input.tsx";
 import Modal from "../components/Modal.tsx";
-import { resetWarningCache } from "https://esm.sh/v111/@types/prop-types@15.7.5/X-YS9yZWFjdDpwcmVhY3QvY29tcGF0CmQvcHJlYWN0QDEwLjExLjA/index";
+import useCurrentUser from "../hooks/useCurrentUser.ts";
 
 const RegisterModal: FunctionalComponent = () => {
+  const { mutate: mutateCurrentUser } = useCurrentUser();
+
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -58,6 +60,8 @@ const RegisterModal: FunctionalComponent = () => {
         password,
       });
 
+      mutateCurrentUser();
+
       toast.success("Logged in!", toastOptions);
     } catch (error) {
       console.error(error);
@@ -78,17 +82,7 @@ const RegisterModal: FunctionalComponent = () => {
   const bodyContent = (
     <div class="flex flex-col gap-4">
       <Input
-        placeholder="Email"
-        onChange={(e) => {
-          if (e.target instanceof HTMLInputElement) {
-            setEmail(e.target.value);
-          }
-        }}
-        value={email}
-        disabled={isLoading}
-      />
-      <Input
-        placeholder="Name"
+        placeholder="Display Name"
         onChange={(e) => {
           if (e.target instanceof HTMLInputElement) {
             setName(e.target.value);
@@ -98,13 +92,23 @@ const RegisterModal: FunctionalComponent = () => {
         disabled={isLoading}
       />
       <Input
-        placeholder="Username"
+        placeholder="Username (@handle)"
         onChange={(e) => {
           if (e.target instanceof HTMLInputElement) {
             setUsername(e.target.value);
           }
         }}
         value={username}
+        disabled={isLoading}
+      />
+      <Input
+        placeholder="Email"
+        onChange={(e) => {
+          if (e.target instanceof HTMLInputElement) {
+            setEmail(e.target.value);
+          }
+        }}
+        value={email}
         disabled={isLoading}
       />
       <Input

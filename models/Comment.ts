@@ -11,4 +11,4 @@ const commentSchema = new Schema(
 );
 
 // Export model.
-export default model("User", commentSchema);
+export default model("Comment", commentSchema);
