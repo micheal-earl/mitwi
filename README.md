@@ -72,30 +72,32 @@ I decided to undertake this project because I wanted to prove to myself and
 possible employers that I can quickly adapt to new tech stacks and create
 working prototypes.
 
+Ultimately, I think I accomplished that goal.
+
 Unfortunately, I failed to see just how detrimental some of the choices I was
-making would be to actually creating a working web app.
+making would be when actually creating a working web app.
 
 Here's why:
 
 - Deno is an incredible javascript runtime. It even support npm modules.
   However, it barely supports npm modules. Many of the things I tried simply did
   not work.
+- Many Node.js libraries and frameworks that appear to function end up having
+  issues down the line This meant that I had to redo entire sections of the app
+  when a specific things suddenly wouldn't work in my Deno environment.
+- Database drivers, query builders, and ORM's are still kind of underdeveloped
+  for the Deno runtime. My initial plan was to use Prisma and Postgres, but for
+  reasons stated above, it didn't work out. Instead, I opted for Mongoose. I've
+  never used MongoDB and still have very little idea how it actually works.
+- Preact is awesome, and this project only made me love it even more. The
+  problem is that when I use a React based library, I am now using it through
+  two compatability layers: Deno's npm support, and Preacts compat layer.
 - Deno Deploy is an awesome service for deploying your deno based apps.
   Unfortunately, it does not support Deno's `npm:` specifier. The feature that
   allows you to load commonjs npm modules.
 - Because Deno Deploy did not work, and I wanted a live demo of my web app, I
   had to spend countless hours researching and testing alternatives. This was
   not productive.
-- Many Node.js libraries and frameworks that appear to function end up having
-  issues down the line This meant that I had to redo entire sections of the app
-  when a specific things suddenly wouldn't work in my Deno environment.
-- Database drivers, query builders, and ORM's are still kind of underdeveloped
-  for the Deno runtime. My initial plan was to use Prisma, but for reasons
-  stated above, it didn't work out. Instead, I opted for Mongoose. I've never
-  used MongoDB and still have very little idea how it actually works.
-- Preact is awsome, and this project only made me love it even more. The problem
-  is that when I use a React based library, I am now using it through two
-  compatability layers: Deno's npm support, and Preacts compat layer.
 
 Of course, even with all of the above roadblocks, I perservered and stubbornly
 pushed my way into creating a working web app.
