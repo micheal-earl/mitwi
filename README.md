@@ -97,7 +97,7 @@ Here's why:
   is that when I use a React based library, I am now using it through two
   compatability layers: Deno's NPM support, and Preacts compat layer.
 
-Of course, even with all of the above roadblock, I perservered and stubbornly
+Of course, even with all of the above roadblocks, I perservered and stubbornly
 pushed my way into creating a working web app.
 
 Does this web app scale? Absolutely not. There is no recommendation algorithm
@@ -122,6 +122,7 @@ island. That's definitely not using Fresh as intended.
 These are the major components of the web app.
 
 - Deno
+- Typescript
 - Fresh
 - Preact
 - Twind (A Tailwind clone without a buildstep)
