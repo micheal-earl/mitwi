@@ -2,23 +2,37 @@
 
 <a name="readme-top"></a>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
 <h3 align="center">Mitwi</h3>
 
 <p align="center">
     Mitwi is a Twitter clone built with Deno and Fresh.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <br />
+    You can view a demo deployment on Railway or Render
+    <br />
+    The Railway deployment should be fast, but my free hours mean it might be down
+    <br />
+    The Render deployment will take a while to spin up after visiting, so give it a few minutes, then refresh
+    <br />
+    <br />
+    <a href="https://mitwi-production.up.railway.app/">View Railway Demo</a>
+    .
+    <a href="https://mitwi.onrender.com/">View Render Demo</a>
   </p>
 </div>
+
+<p align="center">
+    I am looking for work! <a href="https://mikesprogram.com/">Check out my blog</a>.
+    <br />
+    Or contact me on <a href="https://www.linkedin.com/in/micheal-earl/">Linkedin</a>.
+
+</p>
+
+<br />
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -48,7 +62,11 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://www.youtube.com/watch?v=0Ip1Dl0pyxw)
+<h2 align="center">
+  Check out a video!
+</h2>
+
+[![Mitwi Screen Shot][product-screenshot]](https://www.youtube.com/watch?v=0Ip1Dl0pyxw)
 
 I decided to undertake this project because I wanted to prove to myself and
 possible employers that I can quickly adapt to new tech stacks and create
@@ -166,7 +184,9 @@ Micheal Earl - [@michealearldev](https://twitter.com/michealearldev) -
 michealearldev@gmail.com (I prefer email)
 
 Project Link:
-[https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+[https://github.com/Micheal-Earl/mitwi](https://github.com/Micheal-Earl/mitwi)
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
