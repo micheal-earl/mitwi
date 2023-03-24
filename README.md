@@ -77,7 +77,7 @@ making would be to actually creating a working web app.
 
 Here's why:
 
-- Deno is an incredible javascript runtime. It even support NPM modules.
+- Deno is an incredible javascript runtime. It even support npm modules.
   However, it barely supports npm modules. Many of the things I tried simply did
   not work.
 - Deno Deploy is an awesome service for deploying your deno based apps.
@@ -95,7 +95,7 @@ Here's why:
   used MongoDB and still have very little idea how it actually works.
 - Preact is awsome, and this project only made me love it even more. The problem
   is that when I use a React based library, I am now using it through two
-  compatability layers: Deno's NPM support, and Preacts compat layer.
+  compatability layers: Deno's npm support, and Preacts compat layer.
 
 Of course, even with all of the above roadblocks, I perservered and stubbornly
 pushed my way into creating a working web app.
